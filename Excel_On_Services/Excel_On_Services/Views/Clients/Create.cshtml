@@ -1,0 +1,126 @@
+﻿@model Excel_On_Services.Models.Client
+
+@{
+    ViewBag.Title = "Create";
+}
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<style>
+    body {
+        background-color: #f2f3f5;
+    }
+</style>
+
+@*====Navbar Starts====== *@
+<div class="site-wrap">
+
+
+
+
+
+    @*=====Section Start=========*@
+    <section class="site-section bg-light" id="contact-section" style="background-image: url(); background-repeat:no-repeat">
+        <div class="container" style="margin-top:65px">
+
+            <center>
+                <div class="row" style="align-content:center">
+                    <div class="col-md-12 mb-5">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="myform" style="margin-top:50px; background:#ffffff;box-shadow:0px 4px 8px 0px rgba(0,0,0,0.5); padding:30px 40px;">
+                                <div class="form-horizontal">
+                                    <h1 style=" color:black;letter-spacing:1px;">Client Form</h1>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @style = "border-radius:5px!important;" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @style = "border-radius:5px!important;" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control", @style = "border-radius:5px!important;" } })
+                                            @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @style = "border-radius:5px!important;" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Service, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @*     @Html.EditorFor(model => model.Service, new { htmlAttributes = new { @class = "form-control" }  })*@
+                                            @Html.DropDownListFor(model => model.Service, new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "Management Service", Value = "Management Service"},
+                      new SelectListItem {Text = "Support Consulting", Value = "Support Consulting"},
+                      new SelectListItem {Text = "HR Professionals", Value = "HR Professionals"}
+
+                  }, "Select Service", new { @class = "form-control" }
+                       )
+                                            @Html.ValidationMessageFor(model => model.Service, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Plan, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(model => model.Plan, new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "Normal", Value = "Normal"},
+                      new SelectListItem {Text = "Premium", Value = "Premium"},
+                      new SelectListItem {Text = "Ultimate", Value = "Ultimate"}
+
+                  }, "Select Plan", new { @class = "form-control" }
+                       )
+                                            @Html.ValidationMessageFor(model => model.Plan, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Submit" class="btn btn-danger" style="width:100%; padding:20px 0; margin-top:30px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+
+
+
+
+                </div>
+            </center>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </section>
+
+    @*=====Section End=========*@
+
+
+</div><!--- Site Wrap --->

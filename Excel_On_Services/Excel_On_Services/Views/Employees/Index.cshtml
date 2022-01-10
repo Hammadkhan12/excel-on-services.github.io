@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Excel_On_Services.Models.Employee>
+
+
+@*====Navbar Starts====== *@
+<div class="site-wrap">
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner" style="background-color:#3e5559;">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-6 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="h2 mb-0">Excel On Services<span class="text-primary">.</span> </a></h1>
+                </div>
+                <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li>@Html.ActionLink("Management", "Management", "Home")</li>
+                            }
+                            <li>@Html.ActionLink("Services", "Service", "Home")</li>
+                            <li>@Html.ActionLink("Our Clients", "Our_Clients", "Home")</li>
+                            <li>@Html.ActionLink("Career", "Create", "ApplyOnlines")</li>
+                            <li>@Html.ActionLink("Contact Us", "Create", "Contacts")</li>
+
+                            <li>@Html.Partial("_LoginPartial")</li>
+                        </ul>
+
+                    </nav>
+                </div>
+
+                <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+            </div>
+        </div>
+    </header>
+
+
+
+    @*====Navbar End====== *@
+
+
+    @*=====Section start======*@
+
+    <section class="site-section bg-light" id="contact-section" style="background-image: url(); background-repeat:no-repeat">
+        <div class="container" style="margin-top:65px">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 style="color:red; font-size:60px; font-style:inherit"><b> Employee</b></h1>
+                    <h4 style="color:lightskyblue"><b> Details</b></h4>
+                </div>
+            </div>
+            <p style="font-size:20px">
+                <b>@Html.ActionLink("Add New Employee", "Create")</b>
+            </p>
+            <p style="text-align:right">   
+                @using (Html.BeginForm("Index", "Employees", FormMethod.Get))
+                {
+                    <b style="color:lightskyblue">Search By:</b>
+                    @Html.RadioButton("searchBy", "Emp_Name") <text><b style="color:red">Name</b></text>
+                    @Html.RadioButton("searchBy", "Emp_Gender") <text><b style="color:red">Gender</b></text>
+                      @Html.RadioButton("searchBy", "Type_Of_Service") <text><b style="color:red">Type Of Service</b></text>
+                    @Html.RadioButton("searchBy", "Department.Dept_name") <text><b style="color:red">Department</b></text>
+                    <br />
+                    @Html.TextBox("search")<input type="submit" value="Search" class="btn-danger" />
+                }
+            </p>
+            <table class="table" border="1">
+                <tr style="background-color:black; color:yellow;border:2px solid; font-family:'Comic Sans MS'">
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Emp_Name)*@
+                        Name
+                    </th>
+                    <th>
+                        E-Mail
+                        @*Html.DisplayNameFor(model => model.Emp_Email)*@
+                    </th>
+                    <th>
+                        Contact
+                        @*@Html.DisplayNameFor(model => model.Emp_Contact)*@
+                    </th>
+                    <th>
+                        Address
+                        @*@Html.DisplayNameFor(model => model.Emp_Address)*@
+                    </th>
+                    <th>
+                        Gender
+                        @*@Html.DisplayNameFor(model => model.Emp_Gender))*@
+                    </th>
+                    <th>
+                        Salary Per Day
+                        @*@Html.DisplayNameFor(model => model.Emp_Salary)*@
+                    </th>
+                    <th>
+                        Types Of Services
+                        @*@Html.DisplayNameFor(model => model.Type_Of_Service)*@
+                    </th>
+                    <th>
+                        Department
+                        @*@Html.DisplayNameFor(model => model.Emp_Images)*@
+                    </th>
+                    <th>
+                        Image
+                        @*@Html.DisplayNameFor(model => model.Department.Dept_name)*@
+                    </th>
+                    <th>Action</th>
+                </tr>
+               
+                @foreach (var item in Model)
+                {
+                    <tr style="background-color:black; color:white; border:2px solid groove">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emp_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emp_Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emp_Contact)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emp_Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emp_Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emp_Salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type_Of_Service)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.Dept_name)
+                        </td>
+                        <td>                           
+                            <img src="@Url.Content(item.Emp_Images)" width="150" height="150"/>
+                        </td>
+                         <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Emp_Id }) <hr />
+                            @Html.ActionLink("Details", "Details", new { id = item.Emp_Id }) <hr />
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Emp_Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+       </section>
+            @*=====Section End======*@
+        </div><!--Site Wrap-->

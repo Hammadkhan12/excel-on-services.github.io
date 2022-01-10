@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplyOnline">
+    <Key>
+      <PropertyRef Name="N_I_C" />
+    </Key>
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Father_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="N_I_C" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Client_Registration">
+    <Key>
+      <PropertyRef Name="Client_Id" />
+    </Key>
+    <Property Name="Client_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Cintact" Type="Int32" />
+    <Property Name="Client_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client_Service" Relationship="Self.FK__Client_Se__Clien__2D27B809" FromRole="Client_Registration" ToRole="Client_Service" />
+  </EntityType>
+  <EntityType Name="Client_Service">
+    <Key>
+      <PropertyRef Name="Cls_Id" />
+    </Key>
+    <Property Name="Cls_Id" Type="Int32" Nullable="false" />
+    <Property Name="Client_Id" Type="Int32" />
+    <Property Name="Service_Id" Type="Int32" />
+    <Property Name="Emp_Id" Type="Int32" />
+    <Property Name="dept_Id" Type="Int32" />
+    <Property Name="Payment" Type="Int32" />
+    <Property Name="No_OF_Services" Type="Int32" />
+    <NavigationProperty Name="Client_Registration" Relationship="Self.FK__Client_Se__Clien__2D27B809" FromRole="Client_Service" ToRole="Client_Registration" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__Client_Se__dept___2E1BDC42" FromRole="Client_Service" ToRole="Department" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Client_Se__Emp_I__2F10007B" FromRole="Client_Service" ToRole="Employees" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Client_Se__Servi__300424B4" FromRole="Client_Service" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Dept_Id" />
+    </Key>
+    <Property Name="Dept_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dept_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client_Service" Relationship="Self.FK__Client_Se__dept___2E1BDC42" FromRole="Department" ToRole="Client_Service" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Todepartment" FromRole="Department" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Emp_Id" />
+    </Key>
+    <Property Name="Emp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dept_id" Type="Int32" />
+    <Property Name="Emp_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type_Of_Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Images" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client_Service" Relationship="Self.FK__Client_Se__Emp_I__2F10007B" FromRole="Employees" ToRole="Client_Service" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Todepartment" FromRole="Employees" ToRole="Department" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Service_Id" />
+    </Key>
+    <Property Name="Service_Id" Type="Int32" Nullable="false" />
+    <Property Name="Service_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Service__Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Service_Rate" Type="Int32" />
+    <Property Name="Status_Of_Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client_Service" Relationship="Self.FK__Client_Se__Servi__300424B4" FromRole="Services" ToRole="Client_Service" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_Se__Clien__2D27B809">
+    <End Role="Client_Registration" Type="Self.Client_Registration" Multiplicity="0..1" />
+    <End Role="Client_Service" Type="Self.Client_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client_Registration">
+        <PropertyRef Name="Client_Id" />
+      </Principal>
+      <Dependent Role="Client_Service">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_Se__dept___2E1BDC42">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Client_Service" Type="Self.Client_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Dept_Id" />
+      </Principal>
+      <Dependent Role="Client_Service">
+        <PropertyRef Name="dept_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_Se__Emp_I__2F10007B">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Client_Service" Type="Self.Client_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Emp_Id" />
+      </Principal>
+      <Dependent Role="Client_Service">
+        <PropertyRef Name="Emp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_Se__Servi__300424B4">
+    <End Role="Services" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Client_Service" Type="Self.Client_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Client_Service">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Todepartment">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Dept_Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="dept_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="ApplyOnlines" EntityType="Self.ApplyOnline" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Client_Registration" EntityType="Self.Client_Registration" />
+    <EntitySet Name="Client_Service" EntityType="Self.Client_Service" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_Se__Clien__2D27B809" Association="Self.FK__Client_Se__Clien__2D27B809">
+      <End Role="Client_Registration" EntitySet="Client_Registration" />
+      <End Role="Client_Service" EntitySet="Client_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_Se__dept___2E1BDC42" Association="Self.FK__Client_Se__dept___2E1BDC42">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Client_Service" EntitySet="Client_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_Se__Emp_I__2F10007B" Association="Self.FK__Client_Se__Emp_I__2F10007B">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Client_Service" EntitySet="Client_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_Se__Servi__300424B4" Association="Self.FK__Client_Se__Servi__300424B4">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Client_Service" EntitySet="Client_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Todepartment" Association="Self.FK_Employees_Todepartment">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="Clients" EntityType="Model.Client" />
+  </EntityContainer>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Plan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

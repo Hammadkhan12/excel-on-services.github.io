@@ -1,0 +1,100 @@
+﻿@model Excel_On_Services.Models.Contact
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <section class="site-section bg-light" id="contact-section">
+        <div class="container" style="margin-top:100px">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h3 class="section-sub-title" style="font-family:'Comic Sans MS'">For Further Query</h3>
+                    <h2 class="section-title mb-3" style="font-family:cursive">Contact Us</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-7 mb-5">
+                    @using (Html.BeginForm("Create", "Contacts", new { @class = "p-5", @style = "background-color:lightskyblue" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="myform" style=" background:#ffffff;box-shadow:0px 4px 8px 0px rgba(0,0,0,0.5); padding:30px 40px;">
+                            <div class="form-horizontal">
+                                <h4 style="font-family:cursive; color:red; font-size:30px">Contact Form</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.First_Name, "First Name", htmlAttributes: new { @class = "control-label", @style = "color:black; font-family:'Comic Sans MS'" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Last_Name, "Last Name", htmlAttributes: new { @class = "control-label", @style = "color:black; font-family:'Comic Sans MS'" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, "E-Mail", htmlAttributes: new { @class = "control-label", @style = "color:black; font-family:'Comic Sans MS'" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Subject, "Subject", htmlAttributes: new { @class = "control-label", @style = "color:black; font-family:'Comic Sans MS'" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Message, "Message", htmlAttributes: new { @class = "control-label", @style = "color:black; font-family:'Comic Sans MS'" })
+                                    <div class="col-md-10">
+                                        @*                             @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", cols = "30", rows = "7", placeholder = "Write your notes or questions here..." })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Send" class="btn btn-danger" style="border:groove" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-md-5">
+
+                    <div class="p-4 mb-3" style="background-color: #3e5559">
+                        <p class="mb-0 font-weight-bold" style="font-family:cursive; color:white">Address</p>
+                        <p class="mb-4" style="font-family: 'Global Sans Serif'; color: red; ">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        <p class="mb-0 font-weight-bold" style="font-family:cursive" ; color:white>Phone</p>
+                        <p class="mb-4" style="font-family: 'Global Sans Serif'"><a href="#">+1 232 3235 324</a></p>
+                        <p class="mb-0 font-weight-bold" style="font-family: cursive; color: white">Email Address</p>
+                        <p class="mb-0" style="font-family:'Global Sans Serif'"><a href="#">youremail@domain.com</a></p>
+                    </div>
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    </section>
+   
+</div> <!-- .site-wrap -->

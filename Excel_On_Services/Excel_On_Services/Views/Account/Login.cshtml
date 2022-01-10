@@ -1,0 +1,90 @@
+﻿@using Excel_On_Services.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+<html>
+<head>
+    <title> Login Form </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        #footer {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body style="        background-size: cover;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('../../images/office-581131_1920.jpg')
+" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <section id="loginForm" style="margin-left: 300px;margin-top: 200px; box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2);background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("")>
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <center><h1 style="color:aquamarine; font-family:cursive; font-size:40px"><b>LOG-IN</b></h1></center>
+                         <center><p style="color:aquamarine">@Html.ActionLink("Register as a new user", "Register") </p></center>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <center>
+                                  <div class="form-group">
+                                   <p style="font-family:cursive">  @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label", @style = "color:aquamarine" })</p>
+                                     <div class="col-md-10">
+                                          @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "background-color:white" })
+                                          @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                     </div>
+                                  </div>
+                            </center>
+                            <center>
+                                  <div class="form-group">
+                                      <p style="font-family:cursive">
+                                          @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label", @style = "color:aquamarine" }) </p>
+                                          <div class="col-md-10">
+                                              @Html.PasswordFor(m => m.Password, new { @class = "form-control", @style = "background-color:white" })
+                                              @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                          </div>
+</div>
+                             </center>
+    <center>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @style = "color:red" })
+</div>
+            </div>
+        </div>
+    </center>
+                           <center>
+                             <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                   <span class="col-md-offset-2 col-md-10"><input type="submit" value="Log in" class="btn btn-danger" style="border:groove"/></span>
+                                      @*<input type="button" value="Back" class="btn btn-danger" />*@
+                               </div>
+                            </div>
+                        </center>
+                             <center>
+                                <p style="color:aquamarine">
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>
+                            </center>
+                        @* Enable this once you have account confirmation enabled for password reset functionality*@
+                            <p>
+                                
+                            </p>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

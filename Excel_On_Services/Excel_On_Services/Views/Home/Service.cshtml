@@ -1,0 +1,153 @@
+﻿@model Excel_On_Services.Models.Service
+
+@{
+    ViewBag.Title = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="site-wrap">
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+   
+    <!-----------------header image start----    data-aos="fade-up"     ------------>
+    <div>
+        <img src="~/images/services.jpg" alt="" width="100%" />
+    </div>
+    <!-----------------header image end     id="services-section"   ---------------->
+    <!-------our services------->
+    <section class="site-section border-bottom bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 class="section-title mb-3" style="font-family:cursive">Our Services</h1>
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+                    <div class="unit-4 d-flex">
+                        <div class="unit-4-icon mr-4"><span class="text-primary icon-autorenew"></span></div>
+                        <div>
+                            <h3 style="color:black; font-family:'Comic Sans MS'">Management services</h3>
+                            <p style="color:black">Alignment of business strategy and risk appetite should minimize the firm's exposure to unexpected losses.the firm's risk management capabilities need to be commensurate with the risks it expects to take.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos-delay="100">
+                    <div class="unit-4 d-flex">
+                        <div class="unit-4-icon mr-4"><span class="text-primary icon-backspace"></span></div>
+                        <div>
+                            <h3 style="color:black; font-family:'Comic Sans MS';">Support Consulting</h3>
+                            <p style="color:black">You are surrounded by simple, obvious solutions that can dramatically increase your income, power, influence and success. The problem is, you just don’t see them.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos-delay="200">
+                    <div class="unit-4 d-flex">
+                        <div class="unit-4-icon mr-4"><span class="text-primary icon-av_timer"></span></div>
+                        <div>
+                            <h3 style="color:black; font-family:'Comic Sans MS'">HR Professionals</h3>
+                            <p style="color:black">I am convinced that nothing we do is more important than hiring and developing people. At the end of the day you bet on people, not on strategies</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--================ Price Table section start =================-->
+        <section class="section-padding priceTable-bg">
+            <div class="container">
+                <div class="section-intro-white pb-85px text-center">
+                    <h2 style="color:red; font-family:cursive;">Popular Pricing Package</h2>
+                    <div class="section-style"></div>
+                </div>
+
+                <div class="priceTable-relative">
+                    <div class="priceTable-wrapper">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                                <div class="card text-center card-pricing" style="background-color: #3e5559; color: white">
+                                    <div class="card-pricing__header">
+                                        <h4>Normal</h4>
+                                        <p style="color:red">Attend only first day</p>
+                                        <h1 class="card-pricing__price"><span>$</span>45.80</h1>
+                                    </div>
+                                    <ul class="card-pricing__list">
+                                        <li>Unlimited of Website</li>
+                                        <li>Unlimited Disk Space</li>
+                                        <li>Unlimited Bandwidth</li>
+                                        <li>24/7/365 Support</li>
+                                        <li>Unlimited Email Account</li>
+                                        <li>99.9% Service Uptime</li>
+                                    </ul>
+                                    <div class="card-pricing__footer" style="font-size:30px">
+                                        <b style="font-family:'Comic Sans MS'"> @Html.ActionLink("Select Plan", "Create", "Clients")</b>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                                <div class="card text-center card-pricing" style="background-color: #3e5559; color: white">
+                                    <div class="card-pricing__header">
+                                        <h4>Premium</h4>
+                                        <p style="color:red">Attend only first day</p>
+                                        <h1 class="card-pricing__price"><span>$</span>65.80</h1>
+                                    </div>
+                                    <ul class="card-pricing__list">
+                                        <li>Unlimited of Website</li>
+                                        <li>Unlimited Disk Space</li>
+                                        <li>Unlimited Bandwidth</li>
+                                        <li>24/7/365 Support</li>
+                                        <li>Unlimited Email Accounts</li>
+                                        <li>99.9% Service Uptime</li>
+                                    </ul>
+                                    <div class="form-actions no-color" style="font-size:30px">
+                                        <b style="font-family:'Comic Sans MS'"> @Html.ActionLink("Select Plan", "Create", "Clients")</b>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                                <div class="card text-center card-pricing" style="background-color: #3e5559; color: white">
+                                    <div class="card-pricing__header">
+                                        <h4>Ultimate</h4>
+                                        <p style="color:red">Attend only first day</p>
+                                        <h1 class="card-pricing__price"><span>$</span>75.80</h1>
+                                    </div>
+                                    <ul class="card-pricing__list">
+                                        <li>Unlimited of Website</li>
+                                        <li>Unlimited Disk Space</li>
+                                        <li>Unlimited Bandwidth</li>
+                                        <li>24/7/365 Support</li>
+                                        <li>Unlimited Email Accounts</li>
+                                        <li>99.9% Service Uptime</li>
+                                    </ul>
+                                    <div class="card-pricing__footer" style="font-size:30px">
+                                        <b style="font-family:'Comic Sans MS'"> @Html.ActionLink("Select Plan", "Create", "Clients")</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ Price Table section end =================-->
+    </section>
+    <!-------our services------->
+    <!-----------------Footer Starts----------------------->
+    
+    <!-----------------Footer Starts----------------------->
+</div> <!-- .site-wrap -->
+<!-----------------footer--------------->

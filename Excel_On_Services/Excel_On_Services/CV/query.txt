@@ -1,0 +1,14 @@
+[Cls_Id] INT NOT NULL PRIMARY KEY, 
+    [Client_Id] INT NULL, 
+    [Service_Id] INT NULL, 
+    [Emp_Id] INT NULL, 
+    [dept_Id] INT NULL, 
+    [Payment] INT NULL, 
+    [No_OF_Services] INT NULL,
+	foreign key(Client_Id) references Client_Registration(Client_Id),
+	foreign key(dept_Id) references Department(Dept_Id),
+	foreign key (Emp_Id) references Employees(Emp_Id),
+	foreign key(Service_Id) references Services(Service_Id)
+
+
+CS.Client_Id,CR.Client_Name,CS.Service_Id,S.Service_Name,CS.No_OF_Services,CS.Payment,Services.Status_Of_Payment,CS.Emp_Id,E.Emp_Name,CS.dept_Id c
